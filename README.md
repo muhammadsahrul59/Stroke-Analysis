@@ -1,5 +1,7 @@
 # Stroke Prediction - Predictive Analysis🏥
 
+![type_of_stroke](https://github.com/muhammadsahrul59/Stroke-Analysis/blob/main/images/type_of_stroke.jpg?raw=true)
+
 ## Domain Proyek
 Domain yang dipilih untuk dilakukan prediksi adalah domain kesehatan, yang berfokus pada penyakit stroke.
 
