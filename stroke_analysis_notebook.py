@@ -8,17 +8,19 @@ Original file is located at
 
 # **Stroke Prediction - Predictive Analysis**
 
+## **Domain**
+
 Domain yang dipilih untuk dilakukan prediksi adalah domain kesehatan, yang berfokus pada penyakit stroke.
 
 Menurut *World Stroke Organization* (WSO), 13 juta orang terserang stroke setiap tahunnya, dan sekitar 5,5 juta orang akan meninggal dunia. Stroke merupakan penyebab utama kematian dan disabilitas di seluruh dunia, dan itulah sebabnya mengapa dampaknya sangat serius dalam semua aspek kesehatan. Stroke tidak hanya memengaruhi pasien, tetapi juga memengaruhi lingkungan sosial, keluarga, dan tempat kerja pasien. Selain itu, berlawanan dengan kepercayaan masyarakat, stroke dapat terjadi pada siapa saja, pada usia berapa pun, tanpa memandang jenis kelamin atau kondisi fisik.
 
 Stroke didefinisikan sebagai gangguan neurologis akut pada pembuluh darah di otak yang terjadi ketika suplai darah ke suatu area otak terhenti dan sel-sel otak kekurangan oksigen. Stroke dibagi menjadi iskemik dan hemoragik. Stroke iskemik bisa ringan hingga sangat parah dengan kerusakan sementara hingga permanen. Perdarahan jarang terjadi dan melibatkan pecahnya pembuluh darah yang mengakibatkan pendarahan otak. Stroke Iskemik, yang merupakan stroke yang paling umum, melibatkan terhentinya aliran darah ke suatu area otak akibat penyempitan atau penyumbatan arteri.
 
-Referensi:
-[1] [Stroke Risk Prediction with Machine Learning Techniques](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9268898/)
+Permasalahan stroke yang signifikan ini memiliki kaitan erat dengan *machine learning*, yang dapat digunakan untuk mendeteksi, mendiagnosis, dan memprediksi risiko stroke secara lebih akurat dan cepat. Dengan menggunakan dataset yang mencakup berbagai faktor risiko seperti usia, tekanan darah, riwayat medis, gaya hidup, dan hasil pemeriksaan klinis, algoritma *machine learning* dapat dilatih untuk mengenali pola dan korelasi yang mungkin tidak terlihat oleh manusia.
+
+Kontribusi dari penerapan *machine learning* dalam dunia kesehatan khususnya stroke sangatlah besar. Dengan model prediksi yang akurat, tenaga medis dapat mengidentifikasi pasien berisiko tinggi lebih awal dan mengambil tindakan pencegahan yang tepat, seperti perubahan gaya hidup atau terapi medis. Hal ini dapat mengurangi jumlah kasus stroke, menurunkan angka kematian, dan mengurangi beban disabilitas yang seringkali menyertai pasien stroke. Selain itu, kemampuan prediksi yang ditingkatkan juga dapat membantu dalam merancang strategi kesehatan masyarakat yang lebih efektif, mengoptimalkan sumber daya kesehatan, dan memberikan perawatan yang lebih personal dan tepat sasaran.
 
 ## **Business Understanding**
-
 Pada bagian _Business Understanding_ akan dijelaskan mengenai permasalahan yang akan diselesaikan (*problem statements*), tujuan (*goal*), dan solusi yang diajukan (*solution statements*).
 
 ### **Problem Statements**
@@ -28,16 +30,13 @@ Bagaimana mengetahui pasien memiliki penyakit stroke berdasarkan riwayat dari va
 Untuk menyelesaikan permasalahan yang telah disampaikan pada bagian *Problem Statement*, maka dibuat model yang digunakan untuk memprediksi apakah seseorang memiliki penyakit stroke berdasarkan riwayat kesehatannya.
 
 ### **Solution statements**
-Solusi pembuatan model yang dilakukan adalah dengan menerapkan 3 algoritma machine learning, terbatas pada **_K-NN_**, **_Random Forest_**, dan **_AdaBoost_**. Diterapkannya 3 algoritma tersebut bertujuan untuk mengkomparasi dan mendapatkan model atau algoritma yang memiliki tingkat _error_ yang paling kecil, sehingga prediksi penyakit jantung memiliki akurasi yang tinggi.
+Solusi pembuatan model yang dilakukan adalah dengan menerapkan 3 algoritma _machine learning_, terbatas pada **_K-NN_**, **_Random Forest_**, dan **_AdaBoost_**. Diterapkannya 3 algoritma tersebut bertujuan untuk mengkomparasi dan mendapatkan model atau algoritma yang memiliki tingkat _error_ yang paling kecil, sehingga prediksi penyakit stroke memiliki akurasi yang tinggi.
 
-- **_K-NN_**
-Algoritma _K-Nearest Neighbor_ (K-NN) adalah algoritma _machine learning_ yang sederhana dan mudah diterapkan, yang mana umumnya digunakan untuk menyelesaikan masalah klasifikasi dan regresi. Algoritma ini termasuk dalam _supervised learning_. Tujuan dari algortima K-NN adalah untuk mengidentifikasi _nearest neighbor_ dari titik yang diberikan, sehingga dapat menetapkan label prediksi ke titik tersebut.
+-  **_K-NN_**: Algoritma _K-Nearest Neighbor_ (K-NN) adalah algoritma _machine learning_ yang sederhana dan mudah diterapkan, yang mana umumnya digunakan untuk menyelesaikan masalah klasifikasi dan regresi. Algoritma ini termasuk dalam _supervised learning_. Tujuan dari algortima K-NN adalah untuk mengidentifikasi _nearest neighbor_ dari titik yang diberikan, sehingga dapat menetapkan label prediksi ke titik tersebut.
 
-- **_Random Forest_**
-_Random forest_ adalah kombinasi dari masing – masing _tree_ atau pohon, yang kemudian dikombinasikan ke dalam satu model. _Random Forest_ bergantung pada sebuah nilai vector acak dengan distribusi yang sama pada semua pohon yang masing masing _tree_ memiliki kedalaman yang maksimal.
+-  **_Random Forest_**: _Random forest_ adalah kombinasi dari masing – masing _tree_ atau pohon, yang kemudian dikombinasikan ke dalam satu model. _Random Forest_ bergantung pada sebuah nilai vector acak dengan distribusi yang sama pada semua pohon yang masing masing _tree_ memiliki kedalaman yang maksimal.
 
-- **_AdaBoost_**
-_AdaBoost_ atau _Adaptive Boost_ merupakan algoritma yang memanfaatkan _bagging_ dan _boosting_ untuk meningkatkan akurasi. Sama seperti algoritma _random forest_, algoritma _AdaBoost_ juga menggunakan beberapa _decision tree_ untuk melakukan prediksi.
+-  **_AdaBoost_**: _AdaBoost_ atau _Adaptive Boost_ merupakan algoritma yang memanfaatkan _bagging_ dan _boosting_ untuk meningkatkan akurasi. Sama seperti algoritma _random forest_, algoritma _AdaBoost_ juga menggunakan beberapa _decision tree_ untuk melakukan prediksi.
 """
 
 # Commented out IPython magic to ensure Python compatibility.
@@ -50,53 +49,52 @@ import pandas as pd
 import seaborn as sns
 
 """## **Data Understanding**
+Dataset yang digunakan pada proyek _machine learning_ ini merupakan **5110 data observasi** yang didapat dan diunduh dari situs [_kaggle_](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset) [2]. Terdapat 11 fitur yang dapat digunakan untuk memprediksi kemungkinan penyakit stroke.
 
-Dataset yang digunakan pada proyek machine learning ini merupakan **5110 data observasi** yang didapat dari situs kaggle [Stroke Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset). Terdapat 11 fitur yang dapat digunakan untuk memprediksi kemungkinan penyakit stroke.
+**Variabel-variabel pada Stroke Prediction Dataset adalah sebaggai berikut:**
 
-**Attribute Information**
+1. _id_: pengenal identitas
 
-1) id: unique identifier
+2. _gender_: Jenis Kelamin pasian
+    - Pria "_Male_",
+    - Wanita "_Female_",
+    - Lainnya "_Other_"
 
-2) gender: "Male", "Female" or "Other"
+3. _age_: usia pasien, dalam tahun (_years_)
 
-3) age: age of the patient
+4. _hypertension_: 0 jika pasien tidak memiliki hipertensi, 1 jika pasien memiliki hipertensi
 
-4) hypertension: 0 if the patient doesn't have hypertension, 1 if the patient has hypertension
+5. _heart_disease_: 0 jika pasien tidak memiliki penyakit jantung, 1 jika pasien memiliki penyakit jantung
 
-5) heart_disease: 0 if the patient doesn't have any heart diseases, 1 if the patient has a heart disease
+6. _ever_married_: Status Pernikahan,
+    - Belum Menikah "_No_",
+    - Sudah Menikah "_Yes_"
 
-6) ever_married: "No" or "Yes"
+7. _work_type_: Jenis Pekerjaan
+    - Masih anak kecil "_children_",
+    - Pemerintahan "_Govt_jov_",
+    - Tidak bekerja "_Never_worked_",
+    - Swasta "_Private_",
+    - Wiraswasta "_Self-employed_"
 
-7) work_type: "children", "Govt_jov", "Never_worked", "Private" or "Self-employed"
+8. _Residence_type_: Jenis Tempat Tinggal
+    - Perdesaan "_Rural_",
+    - Perkotaan "_Urban_"
 
-8) Residence_type: "Rural" or "Urban"
+9. _avg_glucose_level_: kadar glukosa rata-rata dalam darah
 
-9) avg_glucose_level: average glucose level in blood
+10. _bmi_: indeks massa tubuh "_body max index_"
 
-10) bmi: body mass index
+11. _smoking_status_: Status perokok
+    - Sebelumnya perokok "_formerly smoked_",
+    - Tidak pernah merokok "_never smoked_",
+    - Perokok "_smokes_"
+    - Tidak diketahui "_Unknown_"*
 
-11) smoking_status: "formerly smoked", "never smoked", "smokes" or "Unknown"*
+12. _stroke_: 1 jika pasien mengalami stroke atau 0 jika tidak
 
-12) stroke: 1 if the patient had a stroke or 0 if not
-
-*Note: "Unknown" in smoking_status means that the information is unavailable for this patient
-
-[2]: [Stroke Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset)
-
+*Catatan: "_Unknown_" dalam _status_smoking_ berarti informasi tersebut tidak tersedia untuk pasien ini
 """
-
-!pip install -q kaggle
-from google.colab import files
-files.upload()
-
-!mkdir -p ~/.kaggle
-!cp kaggle.json ~/.kaggle/
-!chmod 600 ~/.kaggle/kaggle.json
-!ls ~/.kaggle
-
-!kaggle datasets download -d fedesoriano/stroke-prediction-dataset
-
-!unzip /content/stroke-prediction-dataset.zip
 
 # load the dataset
 stroke_prediction = pd.read_csv('/content/healthcare-dataset-stroke-data.csv')
@@ -107,34 +105,27 @@ stroke_prediction
 # mendapatkan informasi dari dataset
 stroke_prediction.info()
 
-"""Dari informasi yang didapatkan, disimpulkan terdapat 11 fitur pada data _heart disease_, yang mana memiliki 8 fitur _categorical_ dan 3 fitur _numerical_.
+"""Dari informasi yang didapatkan, disimpulkan terdapat 11 fitur pada data _stroke prediction_, yang mana memiliki 8 fitur _categorical_ dan 3 fitur _numerical_.
 
-_Categorical_ fitur di antaranya adalah `gender`, `hypertension`, `heart_disease`, `ever_married`, `work_type`, `Residence-type`, `smoking_status`, dan `stroke`.
+_Categorical_ fitur di antaranya adalah _`gender`_, _`hypertension`_, _`heart_disease`_, _`ever_married`_, _`work_type`_, _`Residence-type`_, _`smoking_status_`, dan _`stroke`_.
 
-_Numerical_ fitur di antaranya adalah `age`, `avg_glucose_level`, dan `bmi`.
+_Numerical_ fitur di antaranya adalah _`age`_, _`avg_glucose_level`_, dan _`bmi`_.
 """
 
 stroke_prediction.describe()
 
-# Define the number of bins
 bins = 50
 
-# Define the colormap
 cmap = plt.cm.viridis
 
-# Create subplots
 fig, axes = plt.subplots(nrows=5, ncols=3, figsize=(20, 15))
 
-# Flatten the axes array for easier iteration
 axes = axes.flatten()
 
-# Loop through each column in the DataFrame
 for i, column in enumerate(stroke_prediction.columns):
-    # Plot histogram
     axes[i].hist(stroke_prediction[column], bins=bins, color=cmap(i / len(stroke_prediction.columns)))
     axes[i].set_title(column)
 
-# Adjust layout
 plt.tight_layout()
 plt.show()
 
@@ -142,175 +133,79 @@ plt.show()
 
 stroke_prediction.columns
 
-def draw_missing_data_table(data):
-    total = data.isnull().sum().sort_values(ascending=False)
-    percent = (data.isnull().sum() / data.isnull().count()).sort_values(ascending=False)
-    missing_data = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
-    return missing_data
-
-print(draw_missing_data_table(stroke_prediction))
-
-data=stroke_prediction.fillna(np.mean(stroke_prediction['bmi']))
-
-"""Terdapat **201 data missing** di bmi dan setelah itu memasukkan data missing tersebut dengan **mean**."""
-
-stroke_prediction.shape
-
-# Boxplot of BMI
 plt.figure(figsize=(8, 6))
 sns.boxplot(x=stroke_prediction['bmi'], palette='viridis')
 plt.xlabel('BMI')
 plt.show()
 
-# Boxplot of avg_glucose_level
 plt.figure(figsize=(8, 6))
 sns.boxplot(x=stroke_prediction['avg_glucose_level'], palette='viridis')
 plt.xlabel('Average Glucose Level')
 plt.show()
 
-"""IQR bertujuan untuk mengapuskan outlier yang ada. Hasil akhir data dari outlier yang telah dihapuskan dapat dilihat dengan `shape`."""
+"""Membagi dataset menjadi 2 fitur, yaitu _Categorical_ dan _Numerical_"""
 
-numeric_columns = stroke_prediction.select_dtypes(include=[np.number]).columns
-
-Q1 = stroke_prediction[numeric_columns].quantile(0.25)
-Q3 = stroke_prediction[numeric_columns].quantile(0.75)
-IQR = Q3 - Q1
-
-stroke_prediction = stroke_prediction[~((stroke_prediction[numeric_columns] < (Q1 - 1.5 * IQR)) |
-                      (stroke_prediction[numeric_columns] > (Q3 + 1.5 * IQR))).any(axis=1)]
-
-print(stroke_prediction.shape)
-
-"""Membagi dataset menjadi 2 fitur, yaitu Categorical dan Numerical"""
-
-# Classifying data into numerical and categorical variables.
 data_numerical = ['age','avg_glucose_level','bmi']
 data_categorical = ['gender', 'hypertension', 'heart_disease', 'ever_married','work_type', 'Residence_type', 'smoking_status', 'stroke']
 
 """#### **Categorical Features**"""
 
-# Smoking Type and Stroke
-pd_stroke = pd.pivot_table(data=data[data['stroke']==1],index=data['smoking_status'],values='stroke',aggfunc='count').reset_index()
-fig, ax = plt.subplots(1, 1, figsize=(10, 5))
-ax.bar(pd_stroke['smoking_status'], pd_stroke['stroke'], width=0.55, linewidth=0.7, color=sns.color_palette('viridis'))
-for idx, val in enumerate(pd_stroke['stroke']):
-    ax.text(idx, val+1, round(val, 1), horizontalalignment='center')
-ax.grid(False)
-for i in ['top', 'right']:
-    ax.spines[i].set_visible(False)
-plt.text(-0.7, 100, 'Riwayat Perokok dan Stroke', fontsize=18, fontweight='bold', fontfamily='serif')
+plt.figure(figsize=(10, 6))
+sns.countplot(data=stroke_prediction, x='smoking_status', hue='stroke', palette='viridis')
+plt.title('Riwayat Perokok dan Stroke')
+plt.xlabel('Status Merokok')
+plt.ylabel('Jumlah')
+plt.legend(title='Stroke', loc='upper right')
 plt.show()
 
-"""- Individu dengan status merokok yang tidak diketahui (Unknown) memiliki 47 kejadian stroke.
+"""_Plot_ diatas memberikan gambaran bahwa status merokok seseorang dapat berhubungan dengan kejadian stroke, namun jumlah kejadian stroke tertinggi justru ditemukan pada individu yang tidak pernah merokok. Hal ini mungkin disebabkan oleh faktor lain yang tidak terlihat dalam data, atau bisa juga menunjukkan bahwa ada variabel perancu (_confounding variables_) yang mempengaruhi hubungan antara merokok dan stroke."""
 
-- Individu yang pernah merokok (Formerly Smoked) memiliki jumlah kejadian stroke kedua tertinggi dengan 70 kejadian.
-
-- Individu yang tidak pernah merokok (Never Smoked) memiliki jumlah kejadian stroke tertinggi dengan 90 kejadian.
-
-- Individu yang masih merokok (Smokes) memiliki jumlah kejadian stroke terendah dengan 42 kejadian.
-
-Plot diatas memberikan gambaran bahwa status merokok seseorang dapat berhubungan dengan kejadian stroke, namun jumlah kejadian stroke tertinggi justru ditemukan pada individu yang tidak pernah merokok. Hal ini mungkin disebabkan oleh faktor lain yang tidak terlihat dalam data, atau bisa juga menunjukkan bahwa ada variabel perancu (confounding variables) yang mempengaruhi hubungan antara merokok dan stroke.
-"""
-
-# Marrital Status and Stroke
-pd_stroke = pd.pivot_table(data=data[data['stroke']==1],index=data['ever_married'],values='stroke',aggfunc='count').reset_index()
-fig, ax = plt.subplots(1, 1, figsize=(10, 5))
-ax.bar(pd_stroke['ever_married'], pd_stroke['stroke'], width=0.55, linewidth=0.7, color=sns.color_palette('viridis'))
-for an in pd_stroke.index:
-    ax.annotate(pd_stroke['stroke'][an], xy=(pd_stroke['ever_married'][an], pd_stroke['stroke'][an]+5), va='center', ha='center')
-ax.grid(False)
-for i in ['top', 'right']:
-    ax.spines[i].set_visible(False)
-plt.text(-0.7, 250, 'Status Pernikahan dan Stroke', fontsize=18, fontweight='bold', fontfamily='serif')
+plt.figure(figsize=(10, 6))
+sns.countplot(data=stroke_prediction, x='ever_married', hue='stroke', palette='viridis')
+plt.title('Status Pernikahan dan Stroke')
+plt.xlabel('Status Pernikahan')
+plt.ylabel('Jumlah')
+plt.legend(title='Stroke', loc='upper right')
 plt.show()
 
-"""Plot diatas memberikan gambaran bahwa status status perkawinan seseorang dapat berhubungan dengan kejadian stroke, yang dimana seseorang yang sudah menikah cenderung memiliki penyakit stroke dibanding yang belum menikah."""
+"""_Plot_ diatas memberikan gambaran bahwa status status perkawinan seseorang dapat berhubungan dengan kejadian stroke, yang dimana seseorang yang sudah menikah cenderung memiliki penyakit stroke dibanding yang belum menikah."""
 
-# Work Type and Stroke
-pd_stroke = pd.pivot_table(data=data[data['stroke']==1],index=data['work_type'],values='stroke',aggfunc='count').reset_index()
-fig, ax = plt.subplots(1, 1, figsize=(10, 5))
-ax.bar(pd_stroke['work_type'], pd_stroke['stroke'], width=0.55, linewidth=0.7, color=sns.color_palette('viridis'))
-for idx, val in enumerate(pd_stroke['stroke']):
-    ax.text(idx, val+1, round(val, 1), horizontalalignment='center')
-ax.grid(False)
-for i in ['top', 'right']:
-    ax.spines[i].set_visible(False)
-plt.text(-0.7, 170, 'Jenis Pekerjaan dan Stroke', fontsize=18, fontweight='bold', fontfamily='serif')
+plt.figure(figsize=(10, 6))
+sns.countplot(data=stroke_prediction, x='work_type', hue='stroke', palette='viridis')
+plt.title('Jenis Pekerjaan dan Stroke')
+plt.xlabel('Jenis Pekerjaan')
+plt.ylabel('Jumlah')
+plt.legend(title='Stroke', loc='upper right')
 plt.show()
 
-"""- Individu yang bekerja di sektor swasta (Private) memiliki jumlah kejadian stroke tertinggi dengan 149 kejadian.
+"""_Plot_ diatas memberikan gambaran bahwa jenis pekerjaan seseorang dapat berhubungan dengan kejadian stroke. Jumlah kejadian stroke tertinggi ditemukan pada **individu yang bekerja di sektor swasta (private)**, diikuti oleh mereka yang bekerja sendiri, dan kemudian mereka yang bekerja di sektor pemerintah. Jumlah kejadian stroke pada anak-anak sangat rendah, yang bisa diharapkan mengingat prevalensi stroke pada usia muda umumnya lebih rendah dibandingkan dengan orang dewasa."""
 
-- Individu yang bekerja sendiri (Self Employed) memiliki jumlah kejadian stroke kedua tertinggi dengan 65 kejadian.
+plt.figure(figsize=(10, 6))
+sns.countplot(data=stroke_prediction, x='hypertension', hue='stroke', palette='viridis')
+plt.title('Hipertensi dan Stroke')
+plt.xlabel('Hipertensi')
+plt.ylabel('Jumlah')
+plt.legend(title='Stroke', loc='upper right')
 
-- Individu yang bekerja di sektor pemerintah (Govt Job) memiliki 33 kejadian stroke.
+"""_Plot_ ini memberikan gambaran bahwa meskipun hipertensi dikenal sebagai faktor risiko utama untuk stroke, jumlah kejadian stroke lebih banyak ditemukan pada individu yang tidak memiliki hipertensi."""
 
-- Anak-anak (Children) memiliki jumlah kejadian stroke terendah dengan 2 kejadian.
-
-Plot diatas memberikan gambaran bahwa jenis pekerjaan seseorang dapat berhubungan dengan kejadian stroke. Jumlah kejadian stroke tertinggi ditemukan pada **individu yang bekerja di sektor swasta**, diikuti oleh mereka yang bekerja sendiri, dan kemudian mereka yang bekerja di sektor pemerintah. Jumlah kejadian stroke pada anak-anak sangat rendah, yang bisa diharapkan mengingat prevalensi stroke pada usia muda umumnya lebih rendah dibandingkan dengan orang dewasa.
-"""
-
-# Hypertension and Stroke
-pd_stroke = pd.pivot_table(data=data[data['stroke']==1],index=data['hypertension'],values='stroke',aggfunc='count').reset_index()
-fig, ax = plt.subplots(1, 1, figsize=(10, 5))
-sns.barplot(ax=ax, x=pd_stroke['hypertension'], y=pd_stroke['stroke'], palette='viridis')
-for idx, val in enumerate(pd_stroke['stroke']):
-    ax.text(idx, val+1, round(val, 1), horizontalalignment='center')
-ax.grid(False)
-for i in ['top', 'right']:
-    ax.spines[i].set_visible(False)
-plt.text(-0.7, 210, 'Hipertensi dan Stroke', fontsize=18, fontweight='bold', fontfamily='serif')
+plt.figure(figsize=(10, 6))
+sns.countplot(data=stroke_prediction, x='heart_disease', hue='stroke', palette='viridis')
+plt.title('Penyakit Jantung dan Stroke')
+plt.xlabel('Penyakit Jantung')
+plt.ylabel('Jumlah')
+plt.legend(title='Stroke', loc='upper right')
 plt.show()
 
-"""- Individu tanpa hipertensi (0) memiliki jumlah kejadian stroke yang lebih tinggi, yaitu 183 kejadian.
+"""_Plot_ diatas menunjukkan bahwa lebih banyak kejadian stroke ditemukan pada individu yang tidak memiliki penyakit jantung dibandingkan dengan mereka yang memiliki penyakit jantung. Meskipun penyakit jantung adalah faktor risiko untuk stroke."""
 
-- Individu dengan hipertensi (1) memiliki jumlah kejadian stroke yang lebih rendah, yaitu 66 kejadian.
+variables = ['age', 'hypertension', 'heart_disease', 'avg_glucose_level', 'bmi', 'stroke']
 
-Plot ini memberikan gambaran bahwa meskipun hipertensi dikenal sebagai faktor risiko utama untuk stroke, jumlah kejadian stroke lebih banyak ditemukan pada individu yang tidak memiliki hipertensi.
-"""
+correlation_matrix = stroke_prediction[variables].corr()
 
-# Heart Disease and Stroke
-pd_stroke = pd.pivot_table(data=data[data['stroke']==1],index=data['heart_disease'],values='stroke',aggfunc='count').reset_index()
-fig, ax = plt.subplots(1, 1, figsize=(10, 5))
-sns.barplot(ax=ax, x=pd_stroke['heart_disease'], y=pd_stroke['stroke'], palette='viridis')
-for idx, val in enumerate(pd_stroke['stroke']):
-    ax.text(idx, val+1, round(val, 1), horizontalalignment='center')
-ax.grid(False)
-for i in ['top', 'right']:
-    ax.spines[i].set_visible(False)
-plt.text(-0.7, 220, 'Penyakit Jantung dan Stroke', fontsize=18, fontweight='bold', fontfamily='serif')
-plt.show()
-
-"""- Individu tanpa penyakit jantung (0) memiliki jumlah kejadian stroke yang lebih tinggi, yaitu 202 kejadian.
-
-- Individu dengan penyakit jantung (1) memiliki jumlah kejadian stroke yang lebih rendah, yaitu 47 kejadian.
-
-Plot diatas menunjukkan bahwa lebih banyak kejadian stroke ditemukan pada individu yang tidak memiliki penyakit jantung dibandingkan dengan mereka yang memiliki penyakit jantung. Meskipun penyakit jantung adalah faktor risiko untuk stroke.
-"""
-
-# Drop non-numeric columns and 'id' column
-numerical_data = data.select_dtypes(include=[np.number]).drop(columns=['id'])
-
-# Create the figure
-fig = plt.figure(figsize=(10, 5), dpi=100)
-gs = fig.add_gridspec(1, 2)
-ax0 = fig.add_subplot(gs[0, 0])
-ax1 = fig.add_subplot(gs[0, 1])
-axes = [ax0, ax1]
-
-# Heatmap of numerical data
-corrmat = numerical_data.corr()
-sns.heatmap(ax=ax0, data=corrmat, annot=True, cmap="viridis", square=True)
-ax1.text(0.5, 0.5, 'No strong correlation between\n any of the features', horizontalalignment='center', verticalalignment='center', fontsize=15, fontfamily='serif')
-ax1.spines["bottom"].set_visible(False)
-ax1.spines["left"].set_visible(False)
-ax1.set_xlabel("")
-ax1.set_ylabel("")
-ax1.set_xticklabels([])
-ax1.set_yticklabels([])
-ax1.tick_params(left=False, bottom=False)
-for i in ["top", "right", "bottom", "left"]:
-    ax1.spines[i].set_visible(False)
-plt.text(-1.7, 1.1, 'Heatmap of Data', fontsize=18, fontweight='bold', fontfamily='serif')
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap='viridis', fmt=".2f", annot_kws={"size": 10})
+plt.title('Correlation Heatmap')
 plt.show()
 
 """**Hasil Pengamatan**:
@@ -319,20 +214,17 @@ Pengamatan:
 
 1) Tidak ada korelasi yang kuat antar fitur.
 
-2) Korelasi tertinggi dapat diamati antara indeks massa tubuh (BMI) dan usia.
+2) Korelasi tertinggi dapat diamati antara indeks massa tubuh (_BMI_) dan usia.
 
 3) Korelasi terendah dapat diamati antara heart_disease dan hyper_tension (patut dipertanyakan).
 
 ##### **Analysis of Categorical Variables**
 """
 
-# Select categorical columns (for demonstration purposes)
 data_categorical = stroke_prediction.select_dtypes(include=['object', 'category'])
 
-# Create the figure
 fig = plt.figure(figsize=(20, 23))
 
-# Plot the count plots for each categorical column
 for indx, val in enumerate(data_categorical.columns):
     ax = plt.subplot(4, 2, indx + 1)
     ax.set_title(val, fontweight='bold', fontfamily='serif')
@@ -341,7 +233,6 @@ for indx, val in enumerate(data_categorical.columns):
     ax.tick_params(axis='both', which='both', length=0)
     sns.countplot(data=data_categorical, x=val, palette='viridis', ax=ax)
 
-# Display the plot
 plt.tight_layout()
 plt.show()
 
@@ -357,51 +248,9 @@ plt.show()
 
 5) Jumlah orang yang tidak merokok memiliki penyakit stroke terbanyak.
 
-##### **Analysing Categorical Variables with Stroke**
-"""
-
-data_cat = data[['gender', 'hypertension', 'heart_disease', 'ever_married','work_type', 'Residence_type', 'smoking_status']]
-
-fig, axes = plt.subplots(4, 2, figsize=(20, 23))
-background_color = '#f6f5f7'
-fig.patch.set_facecolor(background_color)
-
-for idx, val in enumerate(data_cat.columns):
-    row = idx // 2
-    col = idx % 2
-    ax = axes[row, col]
-    ax.set_facecolor(background_color)
-    ax.set_title(val, fontweight='bold', fontfamily='serif')
-    for i in ['top', 'right']:
-        ax.spines[i].set_visible(False)
-    ax.grid(linestyle=':', axis='y')
-    sns.countplot(data=data_cat, x=val, hue=data['stroke'], palette='viridis', ax=ax)
-
-# Adjust layout
-plt.tight_layout()
-plt.show()
-
-"""Hasil Pengamatan:
-
-Observations :
-
-1) Jumlah pria dan wanita yang mengalami stroke sama jumlahnya.
-
-2) Jumlah orang yang tidak memiliki hipertensi juga menunjukkan tanda-tanda tidak ada stroke. Dan orang yang memiliki hipertensi juga tidak menunjukkan tanda-tanda lebih banyak orang yang terkena stroke.
-
-3) Orang dengan penyakit jantung juga menunjukkan tanda-tanda stroke (seperti yang diharapkan).
-
-4) Orang yang menikah menunjukkan tanda-tanda stroke lebih banyak daripada orang yang belum menikah (sesuai dugaan).
-
-5) Karyawan swasta tampaknya lebih banyak mengalami stroke daripada jenis pekerjaan lainnya (mungkin karena tekanan kerja). Orang wiraswasta memang menunjukkan tanda-tanda stroke (mungkin karena alasan seperti penyakit jantung, tekanan tinggi, dll).
-
-6) Tidak ada perbedaan antara orang yang tinggal di daerah perkotaan dan pedesaan dalam hal kejadian stroke.
-
-7) Orang yang sebelumnya merokok dan yang merokok (gabungan) menunjukkan tanda-tanda stroke jauh lebih banyak daripada orang yang tidak pernah merokok (mengingat ukuran sampel orang yang tidak pernah merokok dan orang yang dulu merokok dan merokok sekarang).
-
 #### **Numerical Features**
 
-Melihat histogram masing-masing numerical yaitu `age` ,`avg_glucose_level`,  dan `bmi`
+Melihat histogram masing-masing numerical yaitu _`age`_ ,_`avg_glucose_level`_,  dan _`bmi`_.
 """
 
 fig, axes = plt.subplots(3, 1, figsize=(20, 15))
@@ -433,7 +282,6 @@ for ax in axes:
 
 fig.patch.set_facecolor(background_color)
 
-# Heatmap of numerical data
 corrmat = stroke_prediction[data_numerical].corr()
 sns.heatmap(ax=ax0, data=corrmat, annot=True, cmap="viridis", square=True)
 ax1.text(0.5, 0.5, 'Tidak ada korelasi yang kuat antara\n age, glucose levels, dan BMI', horizontalalignment='center', verticalalignment='center', fontsize=15, fontfamily='serif')
@@ -451,168 +299,205 @@ plt.text(-1.7, 1.1, 'Heatmap of Numerical Variables', fontsize=18, fontweight='b
 
 plt.show()
 
-fig=plt.figure(figsize=(20,15),dpi=100)
-sns.pairplot(data=data,hue='stroke',size=2,palette='viridis')
+data_numerical = stroke_prediction[['age', 'avg_glucose_level', 'bmi', 'stroke']]
+
+sns.pairplot(data_numerical, hue='stroke', palette='viridis')
+plt.suptitle('Pairplot of Numerical Variables', y=1.02)
 plt.show()
 
 """## **Data Preparation**
 
-Ubah Marrital Status, Residence, dan Gender menjadi 0 dan 1. Kemudian menghapus tipe smoking unknown.
+### **Penangan Missing Value**
 """
 
-data['gender']=data['gender'].apply(lambda x : 1 if x=='Male' else 0)
-data["Residence_type"] = data["Residence_type"].apply(lambda x: 1 if x=="Urban" else 0)
-data["ever_married"] = data["ever_married"].apply(lambda x: 1 if x=="Yes" else 0)
+def draw_missing_data_table(data):
+    total = data.isnull().sum().sort_values(ascending=False)
+    percent = (data.isnull().sum() / data.isnull().count()).sort_values(ascending=False)
+    missing_data = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
+    return missing_data
 
-data=data[data['smoking_status']!='Unknown']
+print(draw_missing_data_table(stroke_prediction))
 
-"""Melakukan One Hot Encoding di smoking_status dan work_type"""
+data=stroke_prediction.fillna(np.mean(stroke_prediction['bmi']))
 
-data_dummies = data[['smoking_status','work_type']]
-data_dummies=pd.get_dummies(data_dummies)
-data.drop(columns=['smoking_status','work_type'],inplace=True)
+"""Terdapat **201 _data missing_** di _bmi_ dan setelah itu memasukkan _data missing_ tersebut dengan _**mean**_."""
 
-data_stroke=data['stroke']
-data.drop(columns=['stroke'],inplace=True)
-data=data.merge(data_dummies,left_index=True, right_index=True,how='left')
+stroke_prediction.shape
 
-"""**Splitting data menjadi training and testing sets.**"""
+"""### **Penanganan Outlier**
+
+Menangani _Outlier_: melakukan pengecekan apakah data _stroke prediction_ memiliki _data outlie_r. Apabila terdapat _data outlier_, maka akan dihapus. Untuk mengetahui _data outlier_ yang dimiliki oleh s_troke prediction dataset_, maka digunakanlah _boxplot_ yang memperlihatkan langsung keseluruhan _dataset_. Dapat dilihat bahwa terdapat beberapa _outlier_, khususnya pada fitur BMI yang memiliki _outlier_ paling banyak.
+"""
+
+def draw_missing_data_table(data):
+    total = data.isnull().sum().sort_values(ascending=False)
+    percent = (data.isnull().sum() / data.isnull().count()).sort_values(ascending=False)
+    missing_data = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
+    return missing_data
+
+stroke_prediction['bmi'].fillna(stroke_prediction['bmi'].mean(), inplace=True)
+
+numerical_columns = ['age', 'avg_glucose_level', 'bmi']
+
+fig, axes = plt.subplots(len(numerical_columns), 2, figsize=(15, 12))
+
+for i, col in enumerate(numerical_columns):
+    sns.histplot(stroke_prediction[col], kde=True, ax=axes[i, 0], color='blue')
+    axes[i, 0].set_title(f'Distribution of {col}', fontsize=14)
+    axes[i, 0].set_xlabel(col)
+    axes[i, 0].set_ylabel('Count')
+
+    sns.boxplot(data=stroke_prediction, y=col, ax=axes[i, 1], color='green')
+    axes[i, 1].set_title(f'Boxplot of {col}', fontsize=14)
+    axes[i, 1].set_ylabel(col)
+
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize = (12, 7))
+sns.boxplot(data = stroke_prediction[['age', 'avg_glucose_level', 'bmi']])
+
+"""_IQR_ bertujuan untuk mengapuskan _outlier_ yang ada. Hasil akhir data dari _outlie_r yang telah dihapuskan dapat dilihat dengan _`shape`_."""
+
+hd_outlier = stroke_prediction[['age', 'avg_glucose_level', 'bmi']]
+Q1 = hd_outlier.quantile(0.25)
+Q3 = hd_outlier.quantile(0.75)
+
+IQR = Q3 - Q1
+
+outlier = hd_outlier[~((hd_outlier<(Q1-1.5*IQR))|(hd_outlier>(Q3+1.5*IQR))).any(axis=1)]
+
+"""Setelah menangani outlier dengan _IQR_, maka didapatkan _`shape`_ sebagai berikut:"""
+
+outlier.shape
+
+"""### **Melakukan Label Encoder**
+
+Melakukan _Label Encoder_: Melakukan proses _encoding_ terhadap _`categorical_feature`_
+
+_LabelEncoder()_ dilakukan terhadap fitur-fitur _categorical_
+"""
+
+from sklearn.preprocessing import LabelEncoder
+
+gender_label = LabelEncoder()
+ever_married_label = LabelEncoder()
+work_type_label = LabelEncoder()
+Residence_type_label = LabelEncoder()
+smoking_status_label = LabelEncoder()
+
+stroke_prediction['gender'] = gender_label.fit_transform(stroke_prediction['gender'])
+stroke_prediction['ever_married'] = ever_married_label.fit_transform(stroke_prediction['ever_married'])
+stroke_prediction['work_type'] = work_type_label.fit_transform(stroke_prediction['work_type'])
+stroke_prediction['Residence_type'] = Residence_type_label.fit_transform(stroke_prediction['Residence_type'])
+stroke_prediction['smoking_status'] = smoking_status_label.fit_transform(stroke_prediction['smoking_status'])
+
+stroke_prediction.info()
+
+fig , ax = plt.subplots(figsize=(13,6))
+sns.heatmap(stroke_prediction.corr(), cmap="viridis", linecolor='white' , annot=True , linewidths=1 , ax=ax )
+
+"""### **Splitting Data**
+
+Memisahkan fitur dan target kemudian membagi data menjadi _train_ dan _test_ dengan perbandingan 80% dan 20%. Pembagian ini cukup ideal untuk _dataset_ yang terbilang kecil.
+"""
 
 from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test = train_test_split(data,data_stroke,test_size=0.2,random_state=123)
 
-# Standardizing our training and testing data.
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-x_train = scaler.fit_transform(x_train)
-x_test = scaler.transform(x_test)
+X = stroke_prediction.drop(columns=['stroke'])
+Y = stroke_prediction['stroke']
 
-from imblearn.over_sampling import SMOTE
-sm = SMOTE(random_state=4)
-x_train, y_train = sm.fit_resample(x_train, y_train.ravel())
+Xtrain, Xtest, ytrain, ytest = train_test_split(X, Y, test_size = 0.2, random_state = 21)
 
-"""**Training the Models**
+print('Shape dari Xtrain', Xtrain.shape)
+print('Shape dari Xest', Xtest.shape)
 
-Proses modeling yang dilakukan menggunakan 3 algoritma dan mencari performa yang paling baik di antara ketiganya.
+"""### **Standarisasi**
+
+Standarisasi membantu untuk membuat fitur data menjadi bentuk yang lebih mudah diolah oleh algoritma.Untuk menghindari kebocoran informasi pada data uji menerapkan fitur standarisasi pada data latih. Kemudian, pada tahap evaluasi melakukan standarisasi pada data uji.
 """
 
-# Siapkan dataframe untuk analisis model
-models = pd.DataFrame(index=['train_mse', 'test_mse'],
-                      columns=['KNN', 'RandomForest', 'Boosting'])
+from sklearn.preprocessing import StandardScaler
+
+std_scaler = StandardScaler()
+std_scaler.fit(X)
+
+Xtrain = std_scaler.transform(Xtrain)
+Xtest = std_scaler.transform(Xtest)
+
+Xtrain = pd.DataFrame(Xtrain, columns=X.columns)
+Xtest = pd.DataFrame(Xtest, columns=X.columns)
+
+"""## **Modelling**
+
+Proses _modeling_ yang dilakukan menggunakan 3 algoritma dan mencari performa yang paling baik di antara ketiganya.
+"""
+
+model = pd.DataFrame( index = ['train_mse', 'test_mse'],
+                      columns = ['KNN', 'AdaBoost', 'RandomForest'])
 
 """**K-Nearest Neighbor**"""
 
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import mean_squared_error
-# Initialize the KNN model
-knn_model = KNeighborsRegressor()
 
-# Train the model
-knn_model.fit(x_train, y_train)
+knn = KNeighborsRegressor(n_neighbors=10)
+knn.fit(Xtrain, ytrain)
 
-# Predict on training and testing data
-y_train_pred_knn = knn_model.predict(x_train)
-y_test_pred_knn = knn_model.predict(x_test)
-
-# Calculate Mean Squared Error (MSE)
-train_mse_knn = mean_squared_error(y_train, y_train_pred_knn)
-test_mse_knn = mean_squared_error(y_test, y_test_pred_knn)
-
-# Update the models dataframe
-models['KNN'] = [train_mse_knn, test_mse_knn]
-
-# Print the results
-print("K-Nearest Neighbor Model:")
-print("Training MSE:", train_mse_knn)
-print("Testing MSE:", test_mse_knn)
+model.loc['train_mse','knn'] = mean_squared_error(y_pred = knn.predict(Xtrain), y_true=ytrain)
 
 """**Random Forest**"""
 
 from sklearn.ensemble import RandomForestRegressor
 
-# Initialize the Random Forest model
-rf_model = RandomForestRegressor(random_state=123)
+RF = RandomForestRegressor(n_estimators=100, max_depth=16, random_state=55, n_jobs=-1)
+RF.fit(Xtrain, ytrain)
 
-# Train the model
-rf_model.fit(x_train, y_train)
-
-# Predict on training and testing data
-y_train_pred_rf = rf_model.predict(x_train)
-y_test_pred_rf = rf_model.predict(x_test)
-
-# Calculate Mean Squared Error (MSE)
-train_mse_rf = mean_squared_error(y_train, y_train_pred_rf)
-test_mse_rf = mean_squared_error(y_test, y_test_pred_rf)
-
-# Update the models dataframe
-models['RandomForest'] = [train_mse_rf, test_mse_rf]
-
-# Print the results
-print("Random Forest Model:")
-print("Training MSE:", train_mse_rf)
-print("Testing MSE:", test_mse_rf)
+model.loc['train_mse','RandomForest'] = mean_squared_error(y_pred=RF.predict(Xtrain), y_true=ytrain)
 
 """**Boosting Algorithm**"""
 
 from sklearn.ensemble import AdaBoostRegressor
 
-# Initialize the AdaBoost model
-adaboost_model = AdaBoostRegressor(random_state=123)
-
-# Train the model
-adaboost_model.fit(x_train, y_train)
-
-# Predict on training and testing data
-y_train_pred_adaboost = adaboost_model.predict(x_train)
-y_test_pred_adaboost = adaboost_model.predict(x_test)
-
-# Calculate Mean Squared Error (MSE)
-train_mse_adaboost = mean_squared_error(y_train, y_train_pred_adaboost)
-test_mse_adaboost = mean_squared_error(y_test, y_test_pred_adaboost)
-
-# Update the models dataframe
-models['Boosting'] = [train_mse_adaboost, test_mse_adaboost]
-
-# Print the results
-print("AdaBoost Model:")
-print("Training MSE:", train_mse_adaboost)
-print("Testing MSE:", test_mse_adaboost)
+boosting = AdaBoostRegressor(learning_rate=0.2, random_state=55)
+boosting.fit(Xtrain, ytrain)
+model.loc['train_mse','Boosting'] = mean_squared_error(y_pred=boosting.predict(Xtrain), y_true=ytrain)
 
 """**Evaluasi Model**
 
-Evaluasi metrik yang digunakan untuk mengukur kinerja model adalah metrik mse (Mean Squared Error). Pemilihan matrik ini disebabkan karena kasus atau domain proyek yang dipilih adalah klasifikasi. Matrik MSE, pada dasarnya akan mengukur kuadrat rerata error dari prediksi yang dilakukan. MSE juga akan menghitung selisih kuadrat antara prediksi dan target, yang kemudian melakukan perhitungan rata-rata terhadap nilai-nilai tersebut.
+Evaluasi metrik yang digunakan untuk mengukur kinerja model adalah metrik MSE (_Mean Squared Error_). Pemilihan matrik ini disebabkan karena kasus atau domain proyek yang dipilih adalah klasifikasi. Matrik MSE, pada dasarnya akan mengukur kuadrat rerata error dari prediksi yang dilakukan. MSE juga akan menghitung selisih kuadrat antara prediksi dan target, yang kemudian melakukan perhitungan rata-rata terhadap nilai-nilai tersebut.
 
 Semakin tinggi nilai yang diperoleh MSE, semakin buruk juga modelnya. Nilai MSE tidak pernah negatif, tetapi akan menjadi NOL untuk model yang sempurna.
 """
 
-# Display the models dataframe
-print("Model Evaluation Results:")
-print(models)
+mse = pd.DataFrame(columns=['train', 'test'], index=['KNN', 'AdaBoost', 'RandomForest'])
 
-plt.figure(figsize=(10, 6))
-models.T.plot(kind='barh', color=sns.color_palette('viridis', n_colors=len(models.columns)), edgecolor='black')
-plt.title('Hasil Evaluasi Model')
-plt.xlabel('Mean Squared Error (MSE)')
-plt.legend(loc='best')
-plt.show()
+model_dict = {'KNN': knn, 'AdaBoost': RF, 'RandomForest': boosting}
 
-"""Dari _plot_ yang disajikan di atas, dapat diketahui bahwa model Random Forest memberikan nilai error yang paling kecil. Sehingga, model Random Forest lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit jantung."""
+for name, model in model_dict.items():
+    mse.loc[name, 'train'] = mean_squared_error(y_true=ytrain, y_pred=model.predict(Xtrain))/1e3
+    mse.loc[name, 'test'] = mean_squared_error(y_true=ytest, y_pred=model.predict(Xtest))/1e3
 
-# Create a copy of the first row of the test data for prediction
-prediksi = x_test[:1].copy()
+mse
 
-# Initialize a dictionary to store the true and predicted values
-pred_dict = {'y_true': y_test[:1]}
+fig, ax = plt.subplots()
+mse.sort_values(by='test', ascending=False).plot(kind='barh', ax=ax, zorder=3)
+ax.grid(zorder=0)
 
-# Iterate through each model and make predictions
-for name, model in {'KNN': knn_model, 'RandomForest': rf_model, 'Boosting': adaboost_model}.items():
-    # Make predictions and round to one decimal place
-    pred_dict['prediksi_' + name] = model.predict(prediksi).round(1)
+"""Dari _plot_ yang disajikan di atas, dapat diketahui bahwa model _AdaBoost_ memberikan nilai _error_ yang paling kecil. Sehingga, model AdaBoost lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit stroke."""
 
-# Create a DataFrame from the dictionary
-pred_df = pd.DataFrame(pred_dict)
+prediksi = Xtest.iloc[:10].copy()
+pred_dict = {'y_true':ytest[:10]}
+for name, model in model_dict.items():
+    pred_dict['prediksi_'+name] = model.predict(prediksi).round(1)
 
-# Display the DataFrame
-print(pred_df)
+pd.DataFrame(pred_dict)
 
-"""Hasil prediksi yang diberikan oleh model Random Forest adalah benar, dikarenakan mendekati nilai y_true."""
+"""Dari tabel yang diatas dapat dilihat bahwa prediksi menggunakan _AdaBoost_, memiliki hasil paling sesuai dengan data aslinya _y_true_, dibandingkan kedua model lainnya. Hasil prediksi yang diberikan oleh model _AdaBoost_ adalah benar, dibandingkan dengan prediksi _KNN_ dan _RandomForest_. Maka dapat diketahui bahwa model AdaBoost memberikan nilai _error_ yang paling kecil. Sehingga, model _AdaBoost_ lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit stroke. Dan melihat dari keberhasilan prediksi menggunakan AdaBoost maka proyek ini mampu dan berhasil menyelesaikan Goals yang diinginkan.
+
+Referensi:
+
+[1] E. Dritsas and M. Trigka, “Stroke risk prediction with machine learning techniques,” Sensors, vol. 22, no. 13, p. 4670, Jun. 2022. doi:10.3390/s22134670
+
+[2] Fedesoriano, “Stroke prediction dataset,” Kaggle, https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset.
+"""
