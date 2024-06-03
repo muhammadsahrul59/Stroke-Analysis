@@ -21,7 +21,7 @@ Bagaimana mengetahui pasien memiliki penyakit stroke berdasarkan riwayat dari va
 Untuk menyelesaikan permasalahan yang telah disampaikan pada bagian *Problem Statement*, maka dibuat model yang digunakan untuk memprediksi apakah seseorang memiliki penyakit stroke berdasarkan riwayat kesehatannya.
 
 ### Solution statements
-Solusi pembuatan model yang dilakukan adalah dengan menerapkan 3 algoritma _machine learning_, terbatas pada **_K-NN_**, **_Random Forest_**, dan **_AdaBoost_**. Diterapkannya 3 algoritma tersebut bertujuan untuk mengkomparasi dan mendapatkan model atau algoritma yang memiliki tingkat _error_ yang paling kecil, sehingga prediksi penyakit jantung memiliki akurasi yang tinggi.
+Solusi pembuatan model yang dilakukan adalah dengan menerapkan 3 algoritma _machine learning_, terbatas pada **_K-NN_**, **_Random Forest_**, dan **_AdaBoost_**. Diterapkannya 3 algoritma tersebut bertujuan untuk mengkomparasi dan mendapatkan model atau algoritma yang memiliki tingkat _error_ yang paling kecil, sehingga prediksi penyakit stroke memiliki akurasi yang tinggi.
 
 -  **_K-NN_**: Algoritma _K-Nearest Neighbor_ (K-NN) adalah algoritma _machine learning_ yang sederhana dan mudah diterapkan, yang mana umumnya digunakan untuk menyelesaikan masalah klasifikasi dan regresi. Algoritma ini termasuk dalam _supervised learning_. Tujuan dari algortima K-NN adalah untuk mengidentifikasi _nearest neighbor_ dari titik yang diberikan, sehingga dapat menetapkan label prediksi ke titik tersebut.
 
@@ -187,7 +187,7 @@ $\hat{Y}_{i}$	=	_predicted values_ atau _estimated target values_, dalam kasus i
 
 Gambar 10. Evaluasi Model
 
-Pada Gambar 10, _plot_ yang disajikan di atas, dapat diketahui bahwa model _AdaBoost_ memberikan nilai error yang paling kecil. Sehingga, model _AdaBoost_ lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit jantung.
+Pada Gambar 10, _plot_ yang disajikan di atas, dapat diketahui bahwa model _AdaBoost_ memberikan nilai error yang paling kecil. Sehingga, model _AdaBoost_ lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit stroke.
 
 Tabel 1. Hasil Evaluasi Model
 |                 | train	  |	test        |
@@ -213,7 +213,7 @@ Tabel 2. Hasil Prediksi
 |38  | 1      | 0.0          | 0.0                   | 0.2                   |
 |1199| 0      | 0.1          | 0.0                   | 0.2                   |
 
-Pada Tabel 2, disajikan informasi hasil prediksi dari model yang digunakan. Dari tabel yang disajikan dapat dilihat bahwa prediksi menggunakan _AdaBoost_, memiliki hasil paling sesuai dengan data aslinya _`y_true`_, dibandingkan kedua model lainnya. Hasil prediksi yang diberikan oleh model _AdaBoost_ adalah benar, dibandingkan dengan prediksi _KNN_ dan _RandomForest_. Maka dapat diketahui bahwa model _AdaBoost_ memberikan nilai error yang paling kecil. Sehingga, model _AdaBoost_ lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit jantung. Dan melihat dari keberhasilan prediksi menggunakan _AdaBoost_ maka proyek ini mampu dan berhasil menyelesaikan _Goals_ yang diinginkan.
+Pada Tabel 2, disajikan informasi hasil prediksi dari model yang digunakan. Dari tabel yang disajikan dapat dilihat bahwa prediksi menggunakan _AdaBoost_, memiliki hasil paling sesuai dengan data aslinya _`y_true`_, dibandingkan kedua model lainnya. Hasil prediksi yang diberikan oleh model _AdaBoost_ adalah benar, dibandingkan dengan prediksi _KNN_ dan _RandomForest_. Maka dapat diketahui bahwa model _AdaBoost_ memberikan nilai error yang paling kecil. Sehingga, model _AdaBoost_ lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit stroke. Dan melihat dari keberhasilan prediksi menggunakan _AdaBoost_ maka proyek ini mampu dan berhasil menyelesaikan _Goals_ yang diinginkan.
 
 Referensi:
 
