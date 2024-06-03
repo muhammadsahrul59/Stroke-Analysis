@@ -3,9 +3,13 @@
 ## Domain Proyek
 Domain yang dipilih untuk dilakukan prediksi adalah domain kesehatan, yang berfokus pada penyakit stroke.
 
-Menurut *World Stroke Organization* (WSO), 13 juta orang terserang stroke setiap tahunnya, dan sekitar 5,5 juta orang akan meninggal dunia. Stroke merupakan penyebab utama kematian dan disabilitas di seluruh dunia, dan itulah sebabnya mengapa dampaknya sangat serius dalam semua aspek kesehatan. Stroke tidak hanya memengaruhi pasien, tetapi juga memengaruhi lingkungan sosial, keluarga, dan tempat kerja pasien. Selain itu, berlawanan dengan kepercayaan masyarakat, stroke dapat terjadi pada siapa saja, pada usia berapa pun, tanpa memandang jenis kelamin atau kondisi fisik.
+Menurut *World Stroke Organization* (WSO), 13 juta orang terserang stroke setiap tahunnya, dan sekitar 5,5 juta orang akan meninggal dunia. Stroke merupakan penyebab utama kematian dan disabilitas di seluruh dunia, dan itulah sebabnya mengapa dampaknya sangat serius dalam semua aspek kesehatan. Stroke tidak hanya memengaruhi pasien, tetapi juga memengaruhi lingkungan sosial, keluarga, dan tempat kerja pasien. Selain itu, berlawanan dengan kepercayaan masyarakat, stroke dapat terjadi pada siapa saja, pada usia berapa pun, tanpa memandang jenis kelamin atau kondisi fisik[1].
 
-Stroke didefinisikan sebagai gangguan neurologis akut pada pembuluh darah di otak yang terjadi ketika suplai darah ke suatu area otak terhenti dan sel-sel otak kekurangan oksigen. Stroke dibagi menjadi iskemik dan hemoragik. Stroke iskemik bisa ringan hingga sangat parah dengan kerusakan sementara hingga permanen. Perdarahan jarang terjadi dan melibatkan pecahnya pembuluh darah yang mengakibatkan pendarahan otak. Stroke Iskemik, yang merupakan stroke yang paling umum, melibatkan terhentinya aliran darah ke suatu area otak akibat penyempitan atau penyumbatan arteri.
+Stroke didefinisikan sebagai gangguan neurologis akut pada pembuluh darah di otak yang terjadi ketika suplai darah ke suatu area otak terhenti dan sel-sel otak kekurangan oksigen. Stroke dibagi menjadi iskemik dan hemoragik. Stroke iskemik bisa ringan hingga sangat parah dengan kerusakan sementara hingga permanen. Perdarahan jarang terjadi dan melibatkan pecahnya pembuluh darah yang mengakibatkan pendarahan otak. Stroke Iskemik, yang merupakan stroke yang paling umum, melibatkan terhentinya aliran darah ke suatu area otak akibat penyempitan atau penyumbatan arteri[1].
+
+Permasalahan stroke yang signifikan ini memiliki kaitan erat dengan machine learning, yang dapat digunakan untuk mendeteksi, mendiagnosis, dan memprediksi risiko stroke secara lebih akurat dan cepat. Dengan menggunakan dataset yang mencakup berbagai faktor risiko seperti usia, tekanan darah, riwayat medis, gaya hidup, dan hasil pemeriksaan klinis, algoritma machine learning dapat dilatih untuk mengenali pola dan korelasi yang mungkin tidak terlihat oleh manusia[1].
+
+Kontribusi dari penerapan machine learning dalam dunia kesehatan khususnya stroke sangatlah besar. Dengan model prediksi yang akurat, tenaga medis dapat mengidentifikasi pasien berisiko tinggi lebih awal dan mengambil tindakan pencegahan yang tepat, seperti perubahan gaya hidup atau terapi medis. Hal ini dapat mengurangi jumlah kasus stroke, menurunkan angka kematian, dan mengurangi beban disabilitas yang seringkali menyertai pasien stroke. Selain itu, kemampuan prediksi yang ditingkatkan juga dapat membantu dalam merancang strategi kesehatan masyarakat yang lebih efektif, mengoptimalkan sumber daya kesehatan, dan memberikan perawatan yang lebih personal dan tepat sasaran[1].
 
 ## Business Understanding
 Pada bagian _Business Understanding_ akan dijelaskan mengenai permasalahan yang akan diselesaikan (*problem statements*), tujuan (*goal*), dan solusi yang diajukan (*solution statements*).
@@ -26,91 +30,149 @@ Solusi pembuatan model yang dilakukan adalah dengan menerapkan 3 algoritma machi
 -  **_AdaBoost_** _AdaBoost_ atau _Adaptive Boost_ merupakan algoritma yang memanfaatkan _bagging_ dan _boosting_ untuk meningkatkan akurasi. Sama seperti algoritma _random forest_, algoritma _AdaBoost_ juga menggunakan beberapa _decision tree_ untuk melakukan prediksi.
 
 ## Data Understanding
-Dataset yang digunakan pada proyek machine learning ini merupakan **5110 data observasi** yang didapat dari situs kaggle [Stroke Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset). Terdapat 11 fitur yang dapat digunakan untuk memprediksi kemungkinan penyakit stroke.
+Dataset yang digunakan pada proyek machine learning ini merupakan **5110 data observasi** yang didapat dan didownload dari situs [kaggle](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset) [2]. Terdapat 11 fitur yang dapat digunakan untuk memprediksi kemungkinan penyakit stroke.
 
-**Attribute Information**
-1) id: unique identifier
-2) gender: "Male", "Female" or "Other
-3) age: age of the patient
-4) hypertension: 0 if the patient doesn't have hypertension, 1 if the patient has hypertension
-5) heart_disease: 0 if the patient doesn't have any heart diseases, 1 if the patient has a heart disease
-6) ever_married: "No" or "Yes"
-7) work_type: "children", "Govt_jov", "Never_worked", "Private" or "Self-employed"
-8) Residence_type: "Rural" or "Urban"
-9) avg_glucose_level: average glucose level in blood
-10) bmi: body mass index
-11) smoking_status: "formerly smoked", "never smoked", "smokes" or "Unknown"*
-12) stroke: 1 if the patient had a stroke or 0 if not
+**Variabel-variabel pada Stroke Prediction Dataset adalah sebaggai berikut:**
 
-*Note: "Unknown" in smoking_status means that the information is unavailable for this patient
+1. id: pengenal identitas
+
+2. gender: Jenis Kelamin pasian
+    - Pria "Male",
+    - Wanita "Female",
+    - Lainnya "Other"
+
+3. age: usia pasien, dalam tahun (years)
+
+4. hypertension: 0 jika pasien tidak memiliki hipertensi, 1 jika pasien memiliki hipertensi
+
+5. heart_disease: 0 jika pasien tidak memiliki penyakit jantung, 1 jika pasien memiliki penyakit jantung
+
+6. ever_married: Status Pernikahan,
+    - Belum Menikah "No",
+    - Sudah Menikah "Yes"
+
+7. work_type: Jenis Pekerjaan
+    - Masih anak kecil "children",
+    - Pemerintahan "Govt_jov",
+    - Tidak bekerja "Never_worked",
+    - Swasta "Private",
+    - Wiraswasta "Self-employed"
+
+8. Residence_type: Jenis Tempat Tinggal
+    - Perdesaan "Rural",
+    - Perkotaan"Urban"
+
+9. avg_glucose_level: kadar glukosa rata-rata dalam darah
+
+10. bmi: indeks massa tubuh "body max index"
+
+11. smoking_status: Status perokok
+    - Sebelumnya perokok "formerly smoked",
+    - Tidak pernah merokok "never smoked",
+    - Perokok "smokes"
+    - Tidak diketahui "Unknown"*
+
+12. stroke: 1 jika pasien mengalami stroke atau 0 jika tidak
+
+*Note: "Unknown" dalam status_smoking berarti informasi tersebut tidak tersedia untuk pasien ini
 
 ## Explanatory Data Analysis
 ### Univariate Analysis - Categorical Feature
 
 1. Riwayat Perokok dan Stroke
 
-![riwayatperokok_stroke](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/riwayatperokok_stroke.png?raw=true)
+![riwayatperokok_stroke](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/riwayatperokok_stroke.jpg?raw=true)
 
-Plot diatas memberikan gambaran bahwa status merokok seseorang dapat berhubungan dengan kejadian stroke, namun jumlah kejadian stroke tertinggi justru ditemukan pada individu yang tidak pernah merokok. Hal ini mungkin disebabkan oleh faktor lain yang tidak terlihat dalam data, atau bisa juga menunjukkan bahwa ada variabel perancu (confounding variables) yang mempengaruhi hubungan antara merokok dan stroke.
+Gambar 1. Riwayat Perokok dan Stroke
+
+Pada Gambar 1, plot diatas memberikan gambaran bahwa status merokok seseorang dapat berhubungan dengan kejadian stroke, namun jumlah kejadian stroke tertinggi justru ditemukan pada individu yang tidak pernah merokok. Hal ini mungkin disebabkan oleh faktor lain yang tidak terlihat dalam data, atau bisa juga menunjukkan bahwa ada variabel perancu (confounding variables) yang mempengaruhi hubungan antara merokok dan stroke.
 
 2. Status Pernikahan dan Stroke
 
-![statuspernikahan_stroke](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/statuspernikahan_stroke.png?raw=true)
-Plot diatas memberikan gambaran bahwa status status perkawinan seseorang dapat berhubungan dengan kejadian stroke, yang dimana seseorang yang sudah menikah cenderung memiliki penyakit stroke dibanding yang belum menikah.
+![statuspernikahan_stroke](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/statuspernikahan_stroke.jpg?raw=true)
+
+Gambar 2. Status Pernikahan dan Stroke
+
+Pada Gambar 2, plot diatas memberikan gambaran bahwa status status perkawinan seseorang dapat berhubungan dengan kejadian stroke, yang dimana seseorang yang sudah menikah cenderung memiliki penyakit stroke dibanding yang belum menikah.
 
 3. Jenis Pekerjaan dan Stroke
-![jenispekerjaan_stroke](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/jenispekerjaan_stroke.png?raw=true)
-Plot diatas memberikan gambaran bahwa jenis pekerjaan seseorang dapat berhubungan dengan kejadian stroke. Jumlah kejadian stroke tertinggi ditemukan pada **individu yang bekerja di sektor swasta**, diikuti oleh mereka yang bekerja sendiri, dan kemudian mereka yang bekerja di sektor pemerintah. Jumlah kejadian stroke pada anak-anak sangat rendah, yang bisa diharapkan mengingat prevalensi stroke pada usia muda umumnya lebih rendah dibandingkan dengan orang dewasa.
+
+![jenispekerjaan_stroke](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/jenispekerjaan_stroke.jpg?raw=true)
+
+Gambar 3. Jenis Pekejaan dan Stroke
+
+Pada Gambar 3, plot diatas memberikan gambaran bahwa jenis pekerjaan seseorang dapat berhubungan dengan kejadian stroke. Jumlah kejadian stroke tertinggi ditemukan pada **individu yang bekerja di sektor swasta**, diikuti oleh mereka yang bekerja sendiri, dan kemudian mereka yang bekerja di sektor pemerintah. Jumlah kejadian stroke pada anak-anak sangat rendah, yang bisa diharapkan mengingat prevalensi stroke pada usia muda umumnya lebih rendah dibandingkan dengan orang dewasa.
 
 4. Hipertensi dan Stroke
-![jenispekerjaan_stroke](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/hipertensi_stroke.png?raw=true)
-Plot ini memberikan gambaran bahwa meskipun hipertensi dikenal sebagai faktor risiko utama untuk stroke, jumlah kejadian stroke lebih banyak ditemukan pada individu yang tidak memiliki hipertensi.
+![jenispekerjaan_stroke](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/hipertensi_stroke.jpg?raw=true)
 
-5. Heatmap of Data
-![heatmap_of_data](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/heatmap_of_data.png?raw=true)
+Gambar 4. Hipertensi dan Stroke
 
-**Hasil Pengamatan**:
-Pengamatan:
-1) Tidak ada korelasi yang kuat antar fitur.
-2) Korelasi tertinggi dapat diamati antara indeks massa tubuh (BMI) dan usia.
-3) Korelasi terendah dapat diamati antara heart_disease dan hyper_tension (patut dipertanyakan).
+Pada Gambar 4, plot ini memberikan gambaran bahwa meskipun hipertensi dikenal sebagai faktor risiko utama untuk stroke, jumlah kejadian stroke lebih banyak ditemukan pada individu yang tidak memiliki hipertensi.
 
 ### Analysis of Categorical Variables
 ![analysis_of_categorical_variables](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/analysis_of_categorical_variables.png?raw=true)
-Hasil Pengamatan:
-1) Jumlah perempuan lebih banyak daripada laki-laki dalam penyakit stroke.
-2) Jumlah orang yang sudah menikah jauh lebih banyak menderika penyakit stroke daripada yang belum menikah (masuk akal karena distribusinya antara 0 dan 60)
-3) Jumlah yang bekerja di perusahaan swasta memiliki penyakit stroke terbanyak.
-4) Tidak ada perbedaan antara populasi di daerah perkotaan dan pedesaan.
-5) Jumlah orang yang tidak merokok memiliki penyakit stroke terbanyak.
+
+Gambar 5. Analysis of Categorical Variables 
+
+Pada Gambar 5, mendapatkan hasil pengamatan yaitu:
+- Jumlah perempuan lebih banyak daripada laki-laki dalam penyakit stroke.
+- Jumlah orang yang sudah menikah jauh lebih banyak menderika penyakit stroke daripada yang belum menikah (masuk akal karena distribusinya antara 0 dan 60)
+- Jumlah yang bekerja di perusahaan swasta memiliki penyakit stroke terbanyak.
+- Tidak ada perbedaan antara populasi di daerah perkotaan dan pedesaan.
+- Jumlah orang yang tidak merokok memiliki penyakit stroke terbanyak.
 
 ### Analysing Categorical Variables with Stroke
 ![analysing_categorical_variables_with_stroke](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/analysis_categorical_with_stroke.png?raw=true)
-Hasil Pengamatan:
-1) Jumlah pria dan wanita yang mengalami stroke sama jumlahnya.
-2) Jumlah orang yang tidak memiliki hipertensi juga menunjukkan tanda-tanda tidak ada stroke. Dan orang yang memiliki hipertensi juga tidak menunjukkan tanda-tanda lebih banyak orang yang terkena stroke.
-3) Orang dengan penyakit jantung juga menunjukkan tanda-tanda stroke (seperti yang diharapkan).
-4) Orang yang menikah menunjukkan tanda-tanda stroke lebih banyak daripada orang yang belum menikah (sesuai dugaan).
-5) Karyawan swasta tampaknya lebih banyak mengalami stroke daripada jenis pekerjaan lainnya (mungkin karena tekanan kerja). Orang wiraswasta memang menunjukkan tanda-tanda stroke (mungkin karena alasan seperti penyakit jantung, tekanan tinggi, dll).
-6) Tidak ada perbedaan antara orang yang tinggal di daerah perkotaan dan pedesaan dalam hal kejadian stroke.
-7) Orang yang sebelumnya merokok dan yang merokok (gabungan) menunjukkan tanda-tanda stroke jauh lebih banyak daripada orang yang tidak pernah merokok (mengingat ukuran sampel orang yang tidak pernah merokok dan orang yang dulu merokok dan merokok sekarang).
+
+Gambar 6. Analysing Categorical Variables with Stroke
+
+Pada Gambar 6, mendapatkan hasil pengamatan yaitu:
+- Jumlah pria dan wanita yang mengalami stroke sama jumlahnya.
+- Jumlah orang yang tidak memiliki hipertensi juga menunjukkan tanda-tanda tidak ada stroke. Dan orang yang memiliki hipertensi juga tidak menunjukkan tanda-tanda lebih banyak orang yang terkena stroke.
+- Orang dengan penyakit jantung juga menunjukkan tanda-tanda stroke (seperti yang diharapkan).
+- Orang yang menikah menunjukkan tanda-tanda stroke lebih banyak daripada orang yang belum menikah (sesuai dugaan).
+- Karyawan swasta tampaknya lebih banyak mengalami stroke daripada jenis pekerjaan lainnya (mungkin karena tekanan kerja). Orang wiraswasta memang menunjukkan tanda-tanda stroke (mungkin karena alasan seperti penyakit jantung, tekanan tinggi, dll).
+- Tidak ada perbedaan antara orang yang tinggal di daerah perkotaan dan pedesaan dalam hal kejadian stroke.
+- Orang yang sebelumnya merokok dan yang merokok (gabungan) menunjukkan tanda-tanda stroke jauh lebih banyak daripada orang yang tidak pernah merokok (mengingat ukuran sampel orang yang tidak pernah merokok dan orang yang dulu merokok dan merokok sekarang).
 
 ### Univariate Analysis - Numerical Feature
 ![numerical_feature](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/numerical_features.png?raw=true)
-![heatmap_numerical_feature](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/heatmap_of_numerical_variables.png?raw=true)
+
+Gambar 7. Histogram Fitur Numerical
+
+Pada Gambar 7, plot diatas melihatkan histogram masing-masing fitur _numerical_ yaitu age, avg_glucose_level, dan bmi
+
 ![pairplot](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/pairplot.png?raw=true)
 
+Gambar 8. Korelasi Fitur Numerical
+
+Pada Gambar 8, plot diatas melihatkan observasi korelasi antara fitur numerical dengan fitur target
+
 ## Data Preparation
-1. Melakukan Label Encoder: Melakukan proses encoding terhadap  `categorical_feature`. Hal ini dilakukan karena fitur-fitur kategorikal perlu dirubah agar dapat digunakan pada tahap  _modeling_.
-2. Melakukan Splitting: membagi data menjadi  _training_  dan  _testing_  untuk  _modeling_. Dalam melakukan  _splitting_, digunakan rasio 80:20, yang berarti 80% data training, dan 20% data testing.
-3.  Standarisasi: membantu membuat fitur data menjadi bentuk yang lebih mudah diolah oleh algoritma. Dalam standarisasi, digunakan  _module_  `StandarScaler`  yang dapat ditemukan pada  _library_  `sklearn`.
+1. Seleksi Data: Menyeleksi data apakah data tersebut ada yang kosong atau tidak, jika ada data kosong maka akan diisi dengan mean menggunakan `fillna()`. Pada `stroke_prediction` terdapat data missing 201 pada bmi. Hal ini dibuktikan dari pengecekan menggunakan `isnull().sum()`.
+
+![pairplot](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/boxplot.jpg?raw=true)
+
+Gambar 9. Boxplot Fitur Numerical
+
+2. Menangani Outlier: melakukan pengecekan apakah data stroke prediction memiliki data outlier. Apabila terdapat data outlier, maka akan dihapus. Untuk mengetahui data outlier yang dimiliki oleh stroke prediction dataset, maka digunakanlah boxplot yang memperlihatkan langsung keseluruhan dataset. Dapat dilihat bahwa terdapat beberapa outlier, khususnya pada fitur BMI yang memiliki outlier paling banyak. Dapat dilihat pada Gambar 9, bahwa outlier ditemukan pada `age`, `avg_glucose_level`, dan `bmi`. Untuk mengetasi outlier maka digunakan metode IQR. Hasil akhir data dari outlier yang telah dihapuskan dapat dilihat dengan shape.
+3. Melakukan Label Encoder: Melakukan proses encoding terhadap  `categorical_feature`. Hal ini dilakukan karena fitur-fitur kategorikal perlu dirubah agar dapat digunakan pada tahap  _modeling_.
+4. Melakukan Splitting: membagi data menjadi  _training_  dan  _testing_  untuk  _modeling_. Dalam melakukan  _splitting_, digunakan rasio 80:20, yang berarti 80% data training, dan 20% data testing.
+5. Standarisasi: membantu membuat fitur data menjadi bentuk yang lebih mudah diolah oleh algoritma. Dalam standarisasi, digunakan  _module_  `StandarScaler`  yang dapat ditemukan pada  _library_  `sklearn`. Menggunakan `StandarScaler` dibanding teknik/metode lainnya adalah untuk beberapa algoritma optimasi, data yang berskala standar bisa membantu dalam mencapai konvergensi lebih cepat dan stabil.
 
 ## Modelling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Proses ini dilakukan dengan menggunakan tiga algoritma, yakni KNN, RandomForest, dan AdaBoost. Hasil akhirnya adalah untuk mencari algoritma yang memiliki performa paling baik dari ketiga algoritma yang digunakan. Dapat dilihat dari _bar chart_ yang menunjukkan tiga model algoritma yang digunakan. Diketahui bahwa algoritma KNN merupakan algoritma yang memiliki error yang paling kecil dibanding model lainnya.
 
-![pairplot](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/evaluasi_model.png?raw=true)
+![evaluasi_model](https://github.com/muhammadsahrul59/stroke-analysis/blob/main/images/evaluasi_model.jpg?raw=true)
 
-Dari _plot_ yang disajikan di atas, dapat diketahui bahwa model Random Forest memberikan nilai error yang paling kecil. Sehingga, model Random Forest lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit jantung.
+Gambar 10. Evaluasi Model
+
+Pada Gambar 10, _plot_ yang disajikan di atas, dapat diketahui bahwa model Random Forest memberikan nilai error yang paling kecil. Sehingga, model Random Forest lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit jantung.
+
+- Dalam membangun model KNN, digunakan module KNeighborsRegressor dari library sklearn. Digunakan parameter n_neighbors = 10 untuk membangun model. Untuk melakukan training, maka digunakan .fit(Xtrain, ytrain) untuk fitting. Kemudian, untuk melakukan melakukan prediksi, digunakan .predict(Xtrain).
+- Dalam membangun model RandomForest, digunakan module RandomForestRegressor dari library sklearn. Digunakan parameter n_estimators=100, max_depth=16, random_state=55, n_jobs=-1 untuk membangun model. Untuk melakukan training, maka digunakan .fit(Xtrain, ytrain) untuk fitting. Kemudian, untuk melakukan melakukan prediksi, digunakan .predict(Xtrain).
+- Dalam membangun model AdaBoost, digunakan module AdaBoostRegressor dari library sklearn. Digunakan parameter learning_rate=0.2, random_state=55 untuk membangun model. Untuk melakukan training, maka digunakan .fit(Xtrain, ytrain) untuk fitting. Kemudian, untuk melakukan melakukan prediksi, digunakan .predict(Xtrain).
 
 ## Evaluation
 Evaluasi metrik yang digunakan untuk mengukur kinerja model adalah metrik mse (Mean Squared Error). Pemilihan matrik ini disebabkan karena kasus atau domain proyek yang dipilih adalah klasifikasi. Matrik MSE, pada dasarnya akan mengukur kuadrat rerata error dari prediksi yang dilakukan. MSE juga akan menghitung selisih kuadrat antara prediksi dan target, yang kemudian melakukan perhitungan rata-rata terhadap nilai-nilai tersebut.
@@ -126,24 +188,35 @@ $\mathrm{MSE}$	=	mean squared error
 
 ${n}$	=	_number of data points_
 
-$Y_{i}$	=	_observed values_ atau _ground truth_ dari nilai sebenarnya, dalam kasus ini nilai yang digunakan adalah nilai dari variabel `HeartDisease`
+$Y_{i}$	=	_observed values_ atau _ground truth_ dari nilai sebenarnya, dalam kasus ini nilai yang digunakan adalah nilai dari variabel `Stroke Prediction`
 
-$\hat{Y}_{i}$	=	_predicted values_ atau _estimated target values_, dalam kasus ini nilai yang digunakan adalah nilai prediksi model terhadap variabel `HeartDisease`
+$\hat{Y}_{i}$	=	_predicted values_ atau _estimated target values_, dalam kasus ini nilai yang digunakan adalah nilai prediksi model terhadap variabel `Stroke Prediction`
 
-Hasil dari _modeling_ dapat dilihat pada tabel di bawah ini. Tabel memberikan informasi detail terkait hasil _training_ dan _testing_
-
+Tabel 1. Hasil Evaluasi Model
 |		            | train	    |	test        |
 |---------------|-----------|-------------|
-|KNN		        | 0.041012  |	0.154174    |
-|AdaBoost	      | 0.153882  |	0.173916    |
-|RandomForest	  | 0.007169  |	0.088335    |
+|KNN		        | 0.000039	|	0.000048    |
+|AdaBoost	      | 0.000007  |	0.000046    |
+|RandomForest	  | 0.000056  |	0.000063    |
 
-Hasil prediksi yang diberikan oleh model Random Forest adalah benar, dikarenakan mendekati nilai y_true.
+Hasil dari _modeling_ dapat dilihat pada Tabel 1. Tabel diatas memberikan informasi detail terkait hasil _training_ dan _testing_
 
-|		 | y_true |	prediksi_KNN | prediksi_RandomForest | prediksi_Boosting |
-|----|--------|--------------|-----------------------|-------------------|
-|3936| 0      | 0.0          | 0.1                   | 0.1               |
+Tabel 2. Hasil Prediksi
 
+|		 | y_true |	prediksi_KNN | prediksi_AdaBoost     | prediksi_RandomForest |
+|----|--------|--------------|-----------------------|-----------------------|
+|32  | 1      | 0.2          | 0.2                   | 0.4                   |
+|4187| 0      | 0.0          | 0.0                   | 0.1                   |
+|1812| 0      | 0.0          | 0.0                   | 0.0                   |
+|4315| 0      | 0.0          | 0.0                   | 0.0                   |
+|2478| 0      | 0.0          | 0.0                   | 0.0                   |
+|4568| 0      | 0.0          | 0.0                   | 0.0                   |
+|2234| 0      | 0.0          | 0.0                   | 0.0                   |
+|4472| 0      | 0.0          | 0.0                   | 0.0                   |
+|38  | 1      | 0.0          | 0.0                   | 0.2                   |
+|1199| 0      | 0.1          | 0.0                   | 0.2                   |
+
+Pada Tabel 2, disajikan informasi hasil prediksi dari model yang digunakan. Dari tabel yang disajikan dapat dilihat bahwa prediksi menggunakan AdaBoost, memiliki hasil paling sesuai dengan data aslinya `y_true`, dibandingkan kedua model lainnya. Hasil prediksi yang diberikan oleh model AdaBoost adalah benar, dibandingkan dengan prediksi KNN dan RandomForest. Maka dapat diketahui bahwa model AdaBoost memberikan nilai error yang paling kecil. Sehingga, model AdaBoost lah yang dipilih sebagai model terbaik untuk melakukan klasifikasi penyakit jantung.
 
 Referensi:
 
